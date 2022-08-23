@@ -1,1 +1,16 @@
-<p>add-user works!</p>
+<h1>Agregar usuario</h1>
+<br/>
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+<p>Ingresar email de usuario:</p>
+<input type="email" formControlName="email" placeholder="Email" size="55" maxlength="50" required>
+
+<div *ngIf="(userEmail.invalid && userEmail.touched) || userEmail.dirty">
+    <small *ngIf="userEmail.errors?.required" class="text-danger">El email es requerido.</small>
+    
+    <small *ngIf="userEmail.errors?.pattern" class="text-danger">El email es incorrecto.</small>
+</div>
+
+<br/><br/><br/>
+<button class="button" type="submit">Agregar</button>
+
+</form>
