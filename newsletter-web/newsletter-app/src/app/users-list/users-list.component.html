@@ -1,1 +1,14 @@
-<p>users-list works!</p>
+<h1>Agregar lista de usuarios</h1>
+<br/>
+<form [formGroup]="usersForm" (ngSubmit)="onSubmit()">
+<p>Ingresar el archivo (txt):</p>
+<input type="file" formControlName="fileName" accept=".txt" (change)="uploadFile($event)" placeholder="file" size="55" required>
+
+<div *ngIf="(usersFile.invalid && usersFile.touched) || usersFile.dirty">
+    <small *ngIf="usersFile.errors?.required" class="text-danger">El archivo es requerido.</small>
+</div>
+
+<br/><br/><br/>
+<button class="button" type="submit">Agregar</button>
+
+</form>

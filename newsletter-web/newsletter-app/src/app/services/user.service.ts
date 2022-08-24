@@ -14,5 +14,9 @@ export class UserService {
 	return this.http.post(this.API_URL + 'addUser', email);
   }
  
-
+  addList(file:File){
+    const formData = new FormData(); 
+    formData.append("file", file, file.name);
+    return this.http.post(this.API_URL + 'addList', formData);
+  }
 }

@@ -11,13 +11,8 @@ export class NewsletterService {
   constructor(private http: HttpClient) { }
   
   addNewsletter(file:File){
-	alert(file);
-	// Create form data
-      const formData = new FormData(); 
-        alert(file.name);
-      // Store form name as "file" with file data
-      formData.append("file", file, file.name);
-    alert(formData);
-	return this.http.post(this.API_URL + 'sendNewsletter', formData);
+    const formData = new FormData(); 
+    formData.append("file", file, file.name);
+    return this.http.post(this.API_URL + 'sendNewsletter', formData);
   }
 }
