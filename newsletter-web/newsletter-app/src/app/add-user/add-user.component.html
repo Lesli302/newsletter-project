@@ -2,7 +2,7 @@
 <br/>
 <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
 <p>Ingresar email de usuario:</p>
-<input type="email" formControlName="email" placeholder="Email" size="55" maxlength="50" required>
+<input formControlName="email" placeholder="Email" size="55" maxlength="50" required>
 
 <div *ngIf="(userEmail.invalid && userEmail.touched) || userEmail.dirty">
     <small *ngIf="userEmail.errors?.required" class="text-danger">El email es requerido.</small>

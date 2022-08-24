@@ -6,11 +6,13 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UserService {
 
-  API_URL: string = "/api/";
+  API_URL: string = "http://localhost:8080/newsletterApi/";
   
   constructor(private http: HttpClient) { }
   
   addUser(email:string){
-	return this.http.get(this.API_URL + 'addUser')
+	return this.http.post(this.API_URL + 'addUser', email);
   }
+ 
+
 }

@@ -1,1 +1,14 @@
-<p>upload-file works!</p>
+<h1>Agregar NOTICIA</h1>
+<br/>
+<form [formGroup]="newsletterForm" (ngSubmit)="onSubmit()">
+<p>Ingresar el archivo (PDF/png):</p>
+<input type="file" formControlName="fileName" accept=".pdf,.png" (change)="uploadFile($event)" placeholder="file" size="55" required>
+
+<div *ngIf="(newsletterFile.invalid && newsletterFile.touched) || newsletterFile.dirty">
+    <small *ngIf="newsletterFile.errors?.required" class="text-danger">El archivo es requerido.</small>
+</div>
+
+<br/><br/><br/>
+<button class="button" type="submit">Agregar</button>
+
+</form>

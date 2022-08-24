@@ -13,7 +13,7 @@ export class AddUserComponent implements OnInit {
 	email: new FormControl('', Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"))
   });
   
-  users: any;
+  result!: string;
   
   constructor(
 	private userService: UserService) { }
@@ -26,11 +26,15 @@ export class AddUserComponent implements OnInit {
     return this.userForm.get('email');
   }
   
-  onSubmit(): void {
-	
-	this.userService.addUser(this.userEmail).subscribe(data =>{
+  onSubmit(): any {
+	if(this.userEmail.value==""){
+		this.userEmail.touched=true;
+		return false;
+	}
+	this.userService.addUser(this.userEmail.value).subscribe(data =>{
         console.log(data);
-        this.users = data;
+        
+        return this.result;
     })
   }
   

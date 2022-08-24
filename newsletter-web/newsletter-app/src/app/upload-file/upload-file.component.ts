@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { NewsletterService } from '../services/newsletter.service';
 
 @Component({
   selector: 'app-upload-file',
@@ -7,9 +9,44 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UploadFileComponent implements OnInit {
 
-  constructor() { }
+
+  newsletterForm = new FormGroup({
+	fileName: new FormControl('', Validators.required)
+  });
+  
+  file!: File;
+  
+  
+  
+  constructor(
+	private newsletterService: NewsletterService) { }
 
   ngOnInit(): void {
+	
+  }
+  
+ uploadFile(event: Event) {
+    const element = event.currentTarget as HTMLInputElement;
+    let fileList: FileList | null = element.files;
+    if (fileList) {
+        this.file = fileList[0];
+    }
+  }
+    
+  get newsletterFile(): any {
+    return this.newsletterForm.get('fileName');
+  }
+  
+  onSubmit():any{
+	if(this.newsletterFile.value==""){
+		this.newsletterFile.touched=true;
+		return false;
+	}
+	
+	this.newsletterService.addNewsletter(this.file).subscribe(fNeswsletter =>{
+        console.log(fNeswsletter);
+        
+    })
   }
 
 }
