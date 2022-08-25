@@ -10,6 +10,12 @@
     <small *ngIf="userEmail.errors?.pattern" class="text-danger">El email es incorrecto.</small>
 </div>
 
+
+<div *ngIf="result!=''">
+  
+  <p>{{ result }}</p>
+</div>
+
 <br/><br/><br/>
 <button class="button" type="submit">Agregar</button>
 

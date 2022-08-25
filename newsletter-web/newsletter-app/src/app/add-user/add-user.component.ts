@@ -33,8 +33,7 @@ export class AddUserComponent implements OnInit {
 	}
 	this.userService.addUser(this.userEmail.value).subscribe(data =>{
         console.log(data);
-        
-        return this.result;
+        return this.result=data;
     })
   }
   
