@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UserService {
 
-  API_URL: string = "http://localhost:8080/newsletterApi/";
+  API_URL: string = "http://localhost:8080/userApi/";
   
   constructor(private http: HttpClient) { }
   
